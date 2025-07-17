@@ -95,10 +95,7 @@ const DashboardPage: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      <Header
-        title="Admin Dashboard - Gadgetarian"
-        showBack={false}
-      />
+      <Header title="Admin Dashboard - Gadgetarian" showBack={false} />
 
       <main className="max-w-7xl mx-auto px-4 py-8">
         <div className="mb-8">
@@ -120,9 +117,7 @@ const DashboardPage: React.FC = () => {
             </button>
           </div>
           
-          <p className="text-gray-600 mb-6">
-            Kelola dan pantau semua service perangkat
-          </p>
+          <p className="text-gray-600 mb-6">Kelola dan pantau semua service perangkat</p>
 
           <div className="relative">
             <Search className="absolute left-3 top-3 w-5 h-5 text-gray-400" />

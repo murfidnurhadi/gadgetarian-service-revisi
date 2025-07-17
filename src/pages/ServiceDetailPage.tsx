@@ -16,13 +16,10 @@ const ServiceDetailPage: React.FC = () => {
 
   const service = id ? getServiceById(id) : null;
 
-  // Determine where to go back based on current location and auth status
   const handleBack = () => {
     if (isAuthenticated && location.pathname.includes('/service/')) {
-      // If logged in and viewing service detail, go back to dashboard
       navigate('/dashboard');
     } else {
-      // If not logged in, go back to home
       navigate('/');
     }
   };
@@ -30,11 +27,7 @@ const ServiceDetailPage: React.FC = () => {
   if (!service) {
     return (
       <div className="min-h-screen bg-gray-50">
-        <Header
-          title="Detail Service"
-          showBack={true}
-          onBack={handleBack}
-        />
+        <Header title="Detail Service" showBack={true} onBack={handleBack} />
         <div className="max-w-4xl mx-auto px-4 py-8">
           <div className="bg-white rounded-lg shadow-lg p-8 text-center">
             <p className="text-gray-600">Service tidak ditemukan</p>
@@ -72,20 +65,11 @@ const ServiceDetailPage: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      <Header
-        title="Detail Service"
-        showBack={true}
-        onBack={handleBack}
-      />
-
+      <Header title="Detail Service" showBack={true} onBack={handleBack} />
       <main className="max-w-6xl mx-auto px-4 py-8">
         <div className="text-center mb-8">
-          <h1 className="text-3xl font-bold text-gray-900 mb-2">
-            Detail Service
-          </h1>
-          <p className="text-gray-600">
-            Informasi lengkap mengenai service perangkat
-          </p>
+          <h1 className="text-3xl font-bold text-gray-900 mb-2">Detail Service</h1>
+          <p className="text-gray-600">Informasi lengkap mengenai service perangkat</p>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
@@ -106,30 +90,23 @@ const ServiceDetailPage: React.FC = () => {
                 <span className="font-medium text-gray-700">Kode Service</span>
                 <span className="text-gray-600">{service.code}</span>
               </div>
-              
               <div className="flex justify-between items-center">
                 <span className="font-medium text-gray-700">Status</span>
-                <span className={`px-2 py-1 rounded-full text-xs font-medium ${getStatusColor()}`}>
-                  {service.status}
-                </span>
+                <span className={`px-2 py-1 rounded-full text-xs font-medium ${getStatusColor()}`}>{service.status}</span>
               </div>
-              
               <div className="flex justify-between items-center">
                 <span className="font-medium text-gray-700">Estimasi Biaya</span>
                 <span className="text-gray-600">Rp {service.estimatedCost.toLocaleString()}</span>
               </div>
             </div>
 
-            {/* Notification toggle - only show for non-authenticated users */}
             {!isAuthenticated && (
               <div className="mt-6 pt-4 border-t border-gray-200">
                 <div className="flex items-center justify-between">
                   <span className="text-sm font-medium text-gray-700">Update Notifikasi</span>
                   <NotificationManager serviceCode={service.code} />
                 </div>
-                <p className="text-xs text-gray-500 mt-2">
-                  Dapatkan notifikasi real-time saat status service berubah
-                </p>
+                <p className="text-xs text-gray-500 mt-2">Dapatkan notifikasi real-time saat status service berubah</p>
               </div>
             )}
           </div>
@@ -151,7 +128,6 @@ const ServiceDetailPage: React.FC = () => {
                   <p className="text-sm text-gray-500">{service.technicianPhone}</p>
                 </div>
               </div>
-
               <div className="flex items-center space-x-3">
                 <div className="w-8 h-8 bg-orange-100 rounded-full flex items-center justify-center">
                   <Wrench className="w-4 h-4 text-orange-600" />
@@ -161,7 +137,6 @@ const ServiceDetailPage: React.FC = () => {
                   <p className="text-gray-600">{service.category}</p>
                 </div>
               </div>
-
               {service.spareParts.length > 0 && (
                 <div className="flex items-start space-x-3">
                   <div className="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center">
@@ -177,7 +152,6 @@ const ServiceDetailPage: React.FC = () => {
                   </div>
                 </div>
               )}
-
               <div className="flex items-center space-x-3">
                 <div className="w-8 h-8 bg-purple-100 rounded-full flex items-center justify-center">
                   <Calendar className="w-4 h-4 text-purple-600" />
@@ -187,7 +161,6 @@ const ServiceDetailPage: React.FC = () => {
                   <p className="text-gray-600">{formatDate(service.entryDate)}</p>
                 </div>
               </div>
-
               <div className="flex items-center space-x-3">
                 <div className="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center">
                   <Clock className="w-4 h-4 text-blue-600" />
@@ -197,7 +170,6 @@ const ServiceDetailPage: React.FC = () => {
                   <p className="text-gray-600">{formatDate(service.estimatedCompletion)}</p>
                 </div>
               </div>
-
               <div className="flex items-center space-x-3">
                 <div className="w-8 h-8 bg-red-100 rounded-full flex items-center justify-center">
                   <FileText className="w-4 h-4 text-red-600" />
@@ -207,7 +179,6 @@ const ServiceDetailPage: React.FC = () => {
                   <p className="text-gray-600">{service.issue}</p>
                 </div>
               </div>
-
               <div className="flex items-center space-x-3">
                 <div className="w-8 h-8 bg-yellow-100 rounded-full flex items-center justify-center">
                   <Phone className="w-4 h-4 text-yellow-600" />
@@ -235,7 +206,6 @@ const ServiceDetailPage: React.FC = () => {
           </div>
         </div>
 
-        {/* Status History Timeline */}
         <StatusHistoryTimeline statusHistory={service.statusHistory} />
       </main>
 

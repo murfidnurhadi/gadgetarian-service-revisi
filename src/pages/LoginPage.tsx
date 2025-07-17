@@ -14,7 +14,7 @@ const LoginPage: React.FC = () => {
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
     setError('');
-    
+
     const success = login(username, password);
     if (success) {
       navigate('/dashboard');
@@ -36,7 +36,7 @@ const LoginPage: React.FC = () => {
           <div className="w-20 h-20 bg-blue-600 rounded-full flex items-center justify-center mx-auto mb-4">
             <Settings className="w-10 h-10 text-white" />
           </div>
-          
+
           <div className="text-blue-600 font-medium mb-2">Gadgetarian</div>
           <h1 className="text-2xl font-bold text-gray-900 mb-2">
             Login Teknisi
